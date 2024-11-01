@@ -15,5 +15,26 @@ function renderComponent() {
         // Transpile JSX to JavaScript using Babel
         const transpiledCode = Babel.transform(codeWithoutImports, { presets: ['react'] }).code;
 
-        // Find the component name (default to App)
-        const componentNameMatch = codeWithoutImports.match(/function\s+([A-Z][A-Za-z0-9_]*)\s*
+        // Evaluate the transpiled code to define the component
+        // This will define 'App' in the global scope
+        eval(transpiledCode);
+
+        // Check if 'App' is defined
+        if (typeof App !== 'function') {
+            throw new Error('App component is not defined. Please ensure your main component is named "App".');
+        }
+
+        // Render the App component
+        ReactDOM.render(React.createElement(App), previewArea);
+    } catch (error) {
+        // Display error message to the user within the preview area
+        previewArea.innerHTML = `<pre style="color: red;">${error.message}</pre>`;
+        console.error('Error rendering component:', error);
+    }
+}
+
+// Add event listener to the Render button
+document.getElementById('render-button').addEventListener('click', renderComponent);
+
+// Optional: Render the default component on page load
+window.onload = renderComponent;
