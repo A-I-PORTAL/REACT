@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Component Preview Tool</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Load React and ReactDOM from CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- Load Babel for JSX transpilation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>React Component Preview Tool</h1>
+        <div class="editor-preview">
+            <!-- Code Editor Section -->
+            <div class="editor">
+                <textarea id="code-input" placeholder="Paste your React component code here...">
+// Example:
+function HelloWorld() {
+    return <h2>Hello, World!</h2>;
+}
+                </textarea>
+                <button id="render-button">Render</button>
+            </div>
+            <!-- Preview Section -->
+            <div class="preview">
+                <h2>Preview:</h2>
+                <div id="preview-area">
+                    <!-- Rendered React component will appear here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Link to the JavaScript file -->
+    <script src="script.js" type="text/javascript"></script>
+</body>
+</html>
